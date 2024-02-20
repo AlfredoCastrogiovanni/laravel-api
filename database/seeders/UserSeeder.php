@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             $newUser->password = Hash::make('123');
             $newUser->save();
 
-        for ($i=0; $i < 15; $i++) {
+        for ($i=0; $i < 10; $i++) {
             $newUser = new User();
             $newUser->name = $faker->unique()->name();
             $newUser->email = $faker->unique()->email();
