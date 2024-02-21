@@ -30,7 +30,7 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return new ProjectResource(Project::with('type','technologies')->findOrFail($id));
     }
 
     /**
