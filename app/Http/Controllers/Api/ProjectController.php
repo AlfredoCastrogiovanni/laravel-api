@@ -12,9 +12,13 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new ProjectResource(Project::with('type','technologies')->get());
+        if($request->has('search')) {
+            return new ProjectResource(Project::where('name', 'LIKE', "%{$request['search']}%")->with('type','technologies')->get());
+        } else {
+            return new ProjectResource(Project::with('type','technologies')->get());
+        }
     }
 
     /**
